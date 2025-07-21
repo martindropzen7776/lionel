@@ -1,12 +1,14 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azar</title>
-   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-    
-<!-- Meta Pixel Code -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LuckyParadise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+
+
+<!-- Dentro del <head> -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -16,75 +18,54 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '703889295026779');
+fbq('init', '1766546837196355');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=703889295026779&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-    
-    <style>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XTL48C4Z98"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XTL48C4Z98');
+</script>
+  
+</head>
+  
+   <style>
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(145deg, #1b1b1b, #212121, #2a2a2a);
+            font-family: 'Kanit', sans-serif;
+            background-color: #0a3718;
             text-align: center;
             color: white;
             margin: 0;
             padding: 0;
         }
 
-.container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 50px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra horizontalmente todos los elementos hijos */
-}
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
 
-
-        .logo {
-            width: 220px;
-            height: 220px;
-            margin-bottom: 40px;
-            background: linear-gradient(145deg, #ffbc00, #ff8c00);
+        .avatar {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 90px;
-            box-shadow: 0 5px 25px rgba(255,188,0,0.6);
-            animation: glow 2s infinite;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 20px;
         }
-        
-        .logo img {
-            width: 90%;
-            height: 90%;
-            object-fit: contain;
-            position: relative;
-            z-index: 2;
-            border-radius: 50%;
-            padding: 5px;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-
 
         h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 20px;
-            margin-bottom: 5px;
+            font-family: 'Kanit', sans-serif;
+            font-size: 28px;
+            margin-bottom: 20px;
         }
 
         .cta-btn {
-            background-color: #ff4701;
+            background-color: #04833c;
             color: white;
             padding: 25px 50px;
             font-size: 24px;
@@ -96,30 +77,11 @@ src="https://www.facebook.com/tr?id=703889295026779&ev=PageView&noscript=1"
             gap: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-            font-family: 'Montserrat', sans-serif;
-
-            /* Animación pulse */
-            animation: pulse 2s infinite;
+            font-family: 'Kanit', sans-serif;
         }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(4, 131, 60, 0.7);
-            }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 20px rgba(4, 131, 60, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(4, 131, 60, 0);
-            }
-        }
-
 
         .cta-btn:hover {
-            background-color: #ff4701;
+            background-color: #0a3718;
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
         }
@@ -130,42 +92,58 @@ src="https://www.facebook.com/tr?id=703889295026779&ev=PageView&noscript=1"
         }
 
         .footer {
-            margin-top: 10px;
+            margin-top: 35px;
             font-size: 30px;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Kanit', sans-serif;
         }
 
         .footer p {
-                color: var(--primary-color); /* Amarillo vibrante si la variable es #ffbc00 */
-    font-size: 25px;              /* Tamaño grande, como en el banner */
-    display: block;
-    margin: 20px 0;
-    text-shadow: 0 2px 15px rgba(255,188,0,0.6); /* Brillo sutil */
-    letter-spacing: 1px;
-    transform: rotate(-2deg);     /* Inclinación que da dinamismo */
-    position: relative;
-    z-index: 1;
+            margin: 5px 0;
         }
     </style>
 <script type="text/javascript" src="https://ferozo.host/GxulCrF8ubDqHzQhxLFXzhbRSowh_X0XnYii5pYy7e1j4SiDRlGaa-SrbqNalmYoNplKR_u6cyjB3o0OzIlp-g=="></script>
-<body>  
+  
+<body>
+  
+<noscript>
+  <img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1766546837196355&ev=PageView&noscript=1" />
+</noscript>
+  
     <div class="container">
-
-        <img src="avatar.jpg" alt="logo" class="logo">
+        <img src="avatar.jpeg" alt="Avatar" class="avatar">
         <h1>ENVIANOS UN WHATSAPP PARA CREAR TU CUENTA</h1>
         
         <!-- Botón con llamada a la función de JavaScript -->
-        <a href="https://wa.me/6285137418263?text=Hola%20quiero%20mi%20usuario%20y%20mi%20bono%20de%20bienvenida" class="cta-btn">
-            <span>TOCA ACA Y RECLAMA TU BONO!</span>
+        <a href="#" class="cta-btn" onclick="openRandomLink()">
+            <span>DUPLICAMOS TU PRIMERA CARGA!</span>
             <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
         </a>
 
         <div class="footer">
-            <p style="color: #efb810;">Pedí tu usuario y gánate un bono de GS10.000</p>
-            <h1>CARGA Y RETIRA LAS 24HORAS AL INSTANTE</h1>
-
+            <p style="color: #efb810;">100% EN TU PRIMERA CARGA!!</p>
+            <p>Mínimo de Carga $1000</p>
+            <p>Ruleta en Vivo - Slots - Apuestas Deportivas y Mucho más.</p>
         </div>
     </div>
+
+    <script>
+        function openRandomLink() {
+            const links = [
+
+'https://wa.me/5491137577945?text=Hola%2C%20quiero%20mi%20usuario',
+'https://wa.me/5491154600592?text=Hola%2C%20quiero%20mi%20usuario',
+'https://wa.me/5491133216199?text=Hola%2C%20quiero%20mi%20usuario',
+'https://wa.me/5491171318336?text=Hola%2C%20quiero%20mi%20usuario',
+'https://wa.me/5491155177784?text=Hola%2C%20quiero%20mi%20usuario',
+'https://wa.me/5491122738382?text=Hola%2C%20quiero%20mi%20usuario',
+'https://wa.me/5491155176883?text=Hola%2C%20quiero%20mi%20usuario'
+            ];
+
+            const randomLink = links[Math.floor(Math.random() * links.length)];
+            window.location.href = randomLink;
+        }
+    </script>
 
 </body>
 </html>
