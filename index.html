@@ -75,6 +75,7 @@ src="https://www.facebook.com/tr?id=1604325283684468&ev=PageView&noscript=1"
       gap: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      animation: pulse 2s infinite;
     }
 
     .cta-btn:hover {
@@ -102,6 +103,22 @@ src="https://www.facebook.com/tr?id=1604325283684468&ev=PageView&noscript=1"
       font-weight: bold;
       color: #FFEB3B; /* Amarillo claro para destacar */
     }
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); /* dorado */
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+  }
+}
+    
   </style>
 </head>
 
@@ -130,13 +147,14 @@ src="https://www.facebook.com/tr?id=1604325283684468&ev=PageView&noscript=1"
   <script>
     function openRandomLink() {
       const links = [
-        'https://wa.me/5491137577945?text=Hola%2C%20quiero%20mi%20usuario',
-        'https://wa.me/5491154600592?text=Hola%2C%20quiero%20mi%20usuario',
-        'https://wa.me/5491133216199?text=Hola%2C%20quiero%20mi%20usuario',
-        'https://wa.me/5491171318336?text=Hola%2C%20quiero%20mi%20usuario',
-        'https://wa.me/5491155177784?text=Hola%2C%20quiero%20mi%20usuario',
-        'https://wa.me/5491122738382?text=Hola%2C%20quiero%20mi%20usuario',
-        'https://wa.me/5491155176883?text=Hola%2C%20quiero%20mi%20usuario'
+        
+'https://wa.me/5491128941552?text=Hola%2C%20quiero%20duplicar%20mi%20carga%21',
+'https://wa.me/5491139154590?text=Hola%2C%20quiero%20duplicar%20mi%20carga%21',
+'https://wa.me/5491141671947?text=Hola%2C%20quiero%20duplicar%20mi%20carga%21',
+'https://wa.me/5491136329608?text=Hola%2C%20quiero%20duplicar%20mi%20carga%21',
+'https://wa.me/5491131848675?text=Hola%2C%20quiero%20duplicar%20mi%20carga%21',
+'https://wa.me/5491136681671?text=Hola%2C%20quiero%20duplicar%20mi%20carga%21'
+
       ];
 
       const randomLink = links[Math.floor(Math.random() * links.length)];
