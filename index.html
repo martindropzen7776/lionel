@@ -122,12 +122,12 @@
     <img src="avatar.jpeg" alt="Avatar" class="avatar">
     <h1>ENVIANOS UN WHATSAPP PARA CREAR TU CUENTA</h1>
 
-    <!-- Botón: ahora abre el chat de Tawk.to al click -->
-    <button class="cta-btn" id="openChat">
-      <span>DUPLICAMOS TU PRIMERA CARGA!</span>
-      <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
-    </button>
-
+<!-- Botón -->
+<a href="#" class="cta-btn" id="openChat">
+  <span>DUPLICAMOS TU PRIMERA CARGA!</span>
+  <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+</a>
+    
     <div class="footer">
       <p>100% EN TU PRIMERA CARGA!!</p>
       <p>Mínimo de Carga $2000</p>
@@ -135,7 +135,9 @@
     </div>
   </div>
 
- <script type="text/javascript">
+
+<!-- Script de Tawk.to -->
+<script type="text/javascript">
   var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
   (function(){
     var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
@@ -146,20 +148,23 @@
     s0.parentNode.insertBefore(s1,s0);
   })();
 
-  // Cuando Tawk carga, enganchamos el botón
+  // Cuando el widget cargue
   Tawk_API.onLoad = function(){
     var btn = document.getElementById('openChat');
-    if (btn) {
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-        if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
-        if (typeof Tawk_API.maximize   === 'function') Tawk_API.maximize();
-      });
-    }
-    // ocultar burbuja minificada
+    if (!btn) return;
+
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
+      if (typeof Tawk_API.maximize === 'function') Tawk_API.maximize();
+    });
+
+    // Ocultamos el globito inicial para que solo abra con tu botón
     if (typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget();
   };
 </script>
+
 </body>
 </html>
+
 
