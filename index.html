@@ -20,7 +20,8 @@
   fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1604325283684468&ev=PageView&noscript=1"/></noscript>
+  src="https://www.facebook.com/tr?id=1604325283684468&ev=PageView&noscript=1"
+  /></noscript>
   <!-- End Meta Pixel Code -->
   
   <!-- Google Analytics -->
@@ -41,45 +42,90 @@
       margin: 0;
       padding: 0;
     }
-    .container { max-width: 400px; margin: 0 auto; padding: 50px 20px; }
-    .avatar {
-      width: 180px; height: 180px; border-radius: 50%;
-      margin-bottom: 20px; border: 4px solid white;
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 50px 20px;
     }
-    h1 { font-size: 26px; margin-bottom: 20px; }
+
+    .avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid white;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
 
     .cta-btn {
-      background-color: #000; color: #fff;
-      padding: 22px 40px; font-size: 20px;
-      text-decoration: none; border-radius: 50px;
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,.3);
-      transition: background-color .3s, transform .2s, box-shadow .3s;
-      animation: pulse 2s infinite; cursor: pointer; border: 0;
+      background-color: #000000; /* Negro del detalle */
+      color: white;
+      padding: 22px 40px;
+      font-size: 20px;
+      text-decoration: none;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      animation: pulse 2s infinite;
+      cursor: pointer;
     }
-    
-    .whatsapp-icon { width: 32px; height: 32px; }
-    .footer { margin-top: 35px; font-size: 18px; }
-    .footer p { margin: 5px 0; color: #fff; }
-    .footer p:first-child { font-weight: bold; color: #FFEB3B; }
 
+    .cta-btn:hover {
+      background-color: #1565C0; /* tono más oscuro del azul */
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
 
+    .footer {
+      margin-top: 35px;
+      font-size: 18px;
+    }
+
+    .footer p {
+      margin: 5px 0;
+      color: #FFFFFF;
+    }
+
+    .footer p:first-child {
+      font-weight: bold;
+      color: #FFEB3B; /* Amarillo claro para destacar */
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); /* dorado */
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+      }
+    }
   </style>
 </head>
 
 <body>
-
-
   <div class="container">
     <img src="avatar.jpeg" alt="Avatar" class="avatar">
-    <h1>ENVIANOS UN MENSAJE PARA CREAR TU CUENTA</h1>
+    <h1>TOCA EL BOTÓN PARA CREAR TU CUENTA Y RECLAMAR TU BONO</h1>
 
-<!-- CTA (usá <button> o <a> con id="openChat") -->
-<button class="cta-btn" id="openChat" aria-haspopup="dialog">
-  <span>DUPLICAMOS TU PRIMERA CARGA!</span>
-  <img src="whatsapp.png" alt="" class="whatsapp-icon">
-</button>
-    
+    <a class="cta-btn" onclick="openChat()">
+      <span>ABRIR CHAT EN VIVO</span>
+    </a>
+
     <div class="footer">
       <p>100% EN TU PRIMERA CARGA!!</p>
       <p>Mínimo de Carga $2000</p>
@@ -87,58 +133,30 @@
     </div>
   </div>
 
+  <!-- Script de Tawk.to -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
 
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/66bdb12f1601a2195ba04f38/1i66dks6q'; // tu ID
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
 
-<!-- ÚNICO embed de Tawk.to -->
-<script type="text/javascript">
-  // 1) Cargamos Tawk (no dupliques este bloque en otro lado)
-  var Tawk_API = window.Tawk_API || {}, Tawk_LoadStart = new Date();
-  (function(){
-    var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/68a35cf1d8c4f11928198fad/1j2v264mo';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-  })();
-
-  // 2) Abrir chat
-  function openChatNow(){
-    if (window.Tawk_API && typeof Tawk_API.maximize === 'function') {
-      // si el widget está oculto por configuración, lo mostramos y maximizamos
-      if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
-      Tawk_API.maximize();
-      return true;
-    }
-    return false;
-  }
-
-  // 3) Hook del botón: si Tawk no está listo, abrimos ni bien termine de cargar
-  document.addEventListener('DOMContentLoaded', function(){
-    var btn = document.getElementById('openChat');
-    if (!btn) return;
-
-    var wantOpen = false; // “intención” de abrir
-
-    btn.addEventListener('click', function(ev){
-      ev.preventDefault();
-      wantOpen = true;
-      if (!openChatNow()) {
-        // Preparamos onLoad UNA VEZ para respetar el primer click
-        var prevOnLoad = (window.Tawk_API && Tawk_API.onLoad) ? Tawk_API.onLoad : null;
-        window.Tawk_API = window.Tawk_API || {};
-        Tawk_API.onLoad = function(){
-          if (prevOnLoad) try { prevOnLoad(); } catch(e){}
-          if (wantOpen) openChatNow();
-        };
+    function openChat() {
+      if (typeof Tawk_API !== 'undefined') {
+        Tawk_API.maximize();
+        setTimeout(function() {
+          if (Tawk_API.isChatMaximized()) {
+            Tawk_API.toggle();
+            Tawk_API.maximize();
+          }
+        }, 600);
       }
-    });
-  });
-</script>
+    }
+  </script>
 </body>
 </html>
-
-
-
-
-
