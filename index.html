@@ -73,10 +73,9 @@
     <img src="avatar.jpeg" alt="Avatar" class="avatar">
     <h1>ENVIANOS UN MENSAJE PARA CREAR TU CUENTA</h1>
 
-    <button class="cta-btn" id="openChat" aria-haspopup="dialog" aria-controls="tawk-chat">
-      <span>DUPLICAMOS TU PRIMERA CARGA!</span>
-      <img src="whatsapp.png" alt="icono" class="whatsapp-icon">
-    </button>
+<a href="https://tawk.to/chat/68a35cf1d8c4f11928198fad/1j2v264mo?lang=es" class="cta-btn">
+  <span>ABRIR CHAT AHORA</span>
+</a>
 
     <div class="footer">
       <p>100% EN TU PRIMERA CARGA!!</p>
@@ -85,59 +84,10 @@
     </div>
   </div>
 
- <!-- Start of Tawk.to Script -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function(){
-      var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/68a35cf1d8c4f11928198fad/1j2v264mo';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-    })();
-  </script>
-  <!-- End of Tawk.to Script -->
-
-  <script>
-    // --- Abrir el chat SOLO cuando hacen clic en tu botón ---
-    // 1) Si ya cargó Tawk, engancha el click
-    function hookButton() {
-      var btn = document.getElementById('openChat');
-      if (!btn) return;
-
-      // Evita duplicar listeners si el script reintenta
-      if (btn.dataset.tawkHooked === '1') return;
-
-      btn.addEventListener('click', function(){
-        // Abre el widget directamente en modo chat (sin menú)
-        if (window.Tawk_API && typeof Tawk_API.maximize === 'function') {
-          Tawk_API.maximize();
-        }
-      });
-      btn.dataset.tawkHooked = '1';
-    }
-
-    // 2) En cuanto cargue el widget, volvemos a asegurar el hook
-    Tawk_API = window.Tawk_API || {};
-    Tawk_API.onLoad = function(){
-      // Opcional: si tenés Help Center, podés ocultarlo desde el panel (Content)
-      // Esto ayuda a que al abrir se muestre directamente la conversación.
-      hookButton();
-    };
-
-    // 3) Fallback: reintentos suaves por si el widget demora
-    (function retryHook(i){
-      hookButton();
-      if (i < 25) setTimeout(function(){ retryHook(i+1); }, 200);
-    })(0);
-  </script>
-
-  
-</script>
 
 </body>
 </html>
+
 
 
 
