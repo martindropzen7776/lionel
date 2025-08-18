@@ -76,12 +76,7 @@
     <img src="avatar.jpeg" alt="Avatar" class="avatar">
     <h1>ENVIANOS UN WHATSAPP PARA CREAR TU CUENTA</h1>
 
-    <!-- Botón que abre Tawk (sin WhatsApp, sin doble click) -->
-    <button class="cta-btn" id="openChat" aria-haspopup="dialog" aria-controls="tawk-chat">
-      <span>DUPLICAMOS TU PRIMERA CARGA!</span>
-      <img src="whatsapp.png" alt="icono" class="whatsapp-icon">
-    </button>
-    <div class="loader" id="chatLoader">Abriendo chat…</div>
+<button class="cta-btn" id="openChat" aria-haspopup="dialog">💬 Hablar en vivo</button>
 
     <div class="footer">
       <p>100% EN TU PRIMERA CARGA!!</p>
@@ -90,87 +85,55 @@
     </div>
   </div>
 
-  <!-- === Tawk.to embed oficial === -->
-  <script type="text/javascript">
-    // Cargar Tawk
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function(){
-      var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/68a35cf1d8c4f11928198fad/1j2v264mo';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-    })();
+<!-- Botón -->
+<button class="cta-btn" id="openChat" aria-haspopup="dialog">💬 Hablar en vivo</button>
 
-    // Función que intenta abrir el chat YA
-    function tryOpenChat() {
-      if (window.Tawk_API && typeof Tawk_API.maximize === 'function') {
+<!-- Tawk embed (UNA sola vez) -->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function(){
+    var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68a35cf1d8c4f11928198fad/1j2v264mo';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
+
+  // Ocultamos cualquier rastro del widget minificado por si el panel tarda
+  (function hideMinified(i){
+    var el = document.querySelector('#tawkchat-minified-wrapper, .tawk-min-container');
+    if (el) el.style.display = 'none';
+    if (i < 25) setTimeout(function(){ hideMinified(i+1); }, 200);
+  })(0);
+
+  // Enganchamos el botón para abrir SOLO cuando el user hace click
+  function hookOpen(){
+    var btn = document.getElementById('openChat');
+    if (!btn || btn.dataset.tawkHooked === '1') return;
+    btn.addEventListener('click', function(){
+      // Mostramos el widget (por si está oculto en Behavior) y lo abrimos maximizado
+      if (window.Tawk_API){
         if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
-        Tawk_API.maximize();
-        return true;
+        if (typeof Tawk_API.maximize   === 'function') Tawk_API.maximize();
       }
-      return false;
-    }
+    });
+    btn.dataset.tawkHooked = '1';
+  }
 
-    // Enganchar el botón una vez cargado Tawk
-    Tawk_API.onLoad = function(){
-      var btn = document.getElementById('openChat');
-      var loader = document.getElementById('chatLoader');
-      if (!btn) return;
+  // Cuando carga Tawk, aseguramos el hook y ocultamos el minificado
+  Tawk_API.onLoad = function(){
+    if (typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget(); // burbuja fuera
+    hookOpen();
+  };
 
-      // Ocultar completamente el globito; solo abrimos con tu botón
-      if (typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget();
-
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-
-        // 1) Intento inmediato (abre al primer click si ya está listo)
-        if (tryOpenChat()) return;
-
-        // 2) Mostrar loader y abrir automáticamente APENAS cargue (sin segundo click)
-        if (loader) loader.style.display = 'block';
-
-        var start = Date.now();
-        var iv = setInterval(function(){
-          if (tryOpenChat()) {
-            clearInterval(iv);
-            if (loader) loader.style.display = 'none';
-          }
-          // seguridad: si por algo no carga en 5s, oculto loader (no WhatsApp)
-          if (Date.now() - start > 5000) {
-            clearInterval(iv);
-            if (loader) loader.style.display = 'none';
-          }
-        }, 50);
-      }, { once: false });
-    };
-
-    // (Opcional) Si el usuario hace click MUY rápido, antes del onLoad:
-    // engancho un listener provisorio que auto-abrirá cuando Tawk cargue.
-    (function earlyClickHook(){
-      var btn = document.getElementById('openChat');
-      var loader = document.getElementById('chatLoader');
-      if (!btn) return;
-
-      let primed = false;
-      btn.addEventListener('click', function(e){
-        if (window.Tawk_API) return; // onLoad se encargará
-        e.preventDefault();
-        if (primed) return; // ya armado
-        primed = true;
-        if (loader) loader.style.display = 'block';
-
-        // En cuanto Tawk levante, abrimos sin pedir otro click
-        var check = setInterval(function(){
-          if (tryOpenChat()) {
-            clearInterval(check);
-            if (loader) loader.style.display = 'none';
-          }
-        }, 50);
-
-
-  </script>
+  // Fallback de reintentos por si el embed demora
+  (function retry(i){
+    hookOpen();
+    if (i < 25) setTimeout(function(){ retry(i+1); }, 200);
+  })(0);
+</script>
 </body>
 </html>
+
 
