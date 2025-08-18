@@ -6,23 +6,22 @@
   <title>Lionel</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
-  <!<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1604325283684468');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1604325283684468&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1604325283684468');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1604325283684468&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
   
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTL48C4Z98"></script>
@@ -76,6 +75,7 @@ src="https://www.facebook.com/tr?id=1604325283684468&ev=PageView&noscript=1"
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
       animation: pulse 2s infinite;
+      cursor: pointer;
     }
 
     .cta-btn:hover {
@@ -104,21 +104,11 @@ src="https://www.facebook.com/tr?id=1604325283684468&ev=PageView&noscript=1"
       color: #FFEB3B; /* Amarillo claro para destacar */
     }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); /* dorado */
-  }
-  70% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
-  }
-}
-    
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+    }
   </style>
 </head>
 
@@ -132,10 +122,11 @@ src="https://www.facebook.com/tr?id=1604325283684468&ev=PageView&noscript=1"
     <img src="avatar.jpeg" alt="Avatar" class="avatar">
     <h1>ENVIANOS UN WHATSAPP PARA CREAR TU CUENTA</h1>
 
-    <a href="#" class="cta-btn" onclick="openRandomLink()">
+    <!-- Botón: ahora abre el chat de Tawk.to al click -->
+    <button class="cta-btn" id="openChat">
       <span>DUPLICAMOS TU PRIMERA CARGA!</span>
       <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
-    </a>
+    </button>
 
     <div class="footer">
       <p>100% EN TU PRIMERA CARGA!!</p>
@@ -144,23 +135,54 @@ src="https://www.facebook.com/tr?id=1604325283684468&ev=PageView&noscript=1"
     </div>
   </div>
 
-  <script>
-    function openRandomLink() {
-      const links = [
-        
-'https://wa.me/5491128941552?text=Hola%20quiero%20mi%20usuario',
-'https://wa.me/5491139154590?text=Hola%20quiero%20mi%20usuario',
-'https://wa.me/5491141671947?text=Hola%20quiero%20mi%20usuario',
-'https://wa.me/5491136329608?text=Hola%20quiero%20mi%20usuario',
-'https://wa.me/5491131848675?text=Hola%20quiero%20mi%20usuario',
-'https://wa.me/5491136681671?text=Hola%20quiero%20mi%20usuario'
+  <!-- === Tawk.to (solo embed oficial; sin iframes) === -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function(){
+      var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/68a35cf1d8c4f11928198fad/1j2v264mo';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
 
-      ];
 
-      const randomLink = links[Math.floor(Math.random() * links.length)];
-      window.location.href = randomLink;
+    // Ocultar la burbuja minificada por si el panel tarda
+    (function killBubble(i){
+      var el = document.querySelector('#tawkchat-minified-wrapper, .tawk-min-container');
+      if (el) el.style.display = 'none';
+      if (i < 30) setTimeout(function(){ killBubble(i+1); }, 200);
+    })(0);
+
+    // Enganchar el botón para abrir SOLO cuando el user hace click
+    function hookOpen(){
+      var btn = document.getElementById('openChat');
+      if (!btn || btn.dataset.tawkHooked === '1') return;
+
+      btn.addEventListener('click', function(){
+        if (window.Tawk_API) {
+          // Mostramos el widget (si está oculto en Behavior) y lo abrimos maximizado
+          if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
+          if (typeof Tawk_API.maximize   === 'function') Tawk_API.maximize();
+          // Importante: el trigger "When widget is maximized -> Send message"
+          // en Tawk inicia la conversación y evita el menú.
+      });
+
+      btn.dataset.tawkHooked = '1';
     }
+
+    // Asegurar hook cuando carga Tawk
+    Tawk_API.onLoad = function(){
+      if (typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget(); // evita burbuja
+      hookOpen();
+    };
+
+    // Reintentos suaves por si el embed demora
+    (function retry(i){
+      hookOpen();
+      if (i < 30) setTimeout(function(){ retry(i+1); }, 200);
+    })(0);
   </script>
 </body>
 </html>
-
