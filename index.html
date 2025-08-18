@@ -133,30 +133,24 @@
     </div>
   </div>
 
-  <!-- Script de Tawk.to -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/66bdb12f1601a2195ba04f38/1i66dks6q'; // tu ID
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
 
-    (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/66bdb12f1601a2195ba04f38/1i66dks6q'; // tu ID
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-    })();
-
-    function openChat() {
-      if (typeof Tawk_API !== 'undefined') {
-        Tawk_API.maximize();
-        setTimeout(function() {
-          if (Tawk_API.isChatMaximized()) {
-            Tawk_API.toggle();
-            Tawk_API.maximize();
-          }
-        }, 600);
-      }
+  function openChat() {
+    if (typeof Tawk_API !== 'undefined' && Tawk_API.maximize) {
+      Tawk_API.maximize();
     }
+  }
+</script>
   </script>
 </body>
 </html>
+
