@@ -135,54 +135,31 @@
     </div>
   </div>
 
-  <!-- === Tawk.to (solo embed oficial; sin iframes) === -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function(){
-      var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/68a35cf1d8c4f11928198fad/1j2v264mo';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-    })();
+ <script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function(){
+    var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68a35cf1d8c4f11928198fad/1j2v264mo';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
 
-
-    // Ocultar la burbuja minificada por si el panel tarda
-    (function killBubble(i){
-      var el = document.querySelector('#tawkchat-minified-wrapper, .tawk-min-container');
-      if (el) el.style.display = 'none';
-      if (i < 30) setTimeout(function(){ killBubble(i+1); }, 200);
-    })(0);
-
-    // Enganchar el botón para abrir SOLO cuando el user hace click
-    function hookOpen(){
-      var btn = document.getElementById('openChat');
-      if (!btn || btn.dataset.tawkHooked === '1') return;
-
-      btn.addEventListener('click', function(){
-        if (window.Tawk_API) {
-          // Mostramos el widget (si está oculto en Behavior) y lo abrimos maximizado
-          if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
-          if (typeof Tawk_API.maximize   === 'function') Tawk_API.maximize();
-          // Importante: el trigger "When widget is maximized -> Send message"
-          // en Tawk inicia la conversación y evita el menú.
+  // Cuando Tawk carga, enganchamos el botón
+  Tawk_API.onLoad = function(){
+    var btn = document.getElementById('openChat');
+    if (btn) {
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
+        if (typeof Tawk_API.maximize   === 'function') Tawk_API.maximize();
       });
-
-      btn.dataset.tawkHooked = '1';
     }
-
-    // Asegurar hook cuando carga Tawk
-    Tawk_API.onLoad = function(){
-      if (typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget(); // evita burbuja
-      hookOpen();
-    };
-
-    // Reintentos suaves por si el embed demora
-    (function retry(i){
-      hookOpen();
-      if (i < 30) setTimeout(function(){ retry(i+1); }, 200);
-    })(0);
-  </script>
+    // ocultar burbuja minificada
+    if (typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget();
+  };
+</script>
 </body>
 </html>
+
