@@ -95,12 +95,6 @@
     s0.parentNode.insertBefore(s1,s0);
   })();
 
-  // Ocultamos cualquier rastro del widget minificado por si el panel tarda
-  (function hideMinified(i){
-    var el = document.querySelector('#tawkchat-minified-wrapper, .tawk-min-container');
-    if (el) el.style.display = 'none';
-    if (i < 25) setTimeout(function(){ hideMinified(i+1); }, 200);
-  })(0);
 
   // Enganchamos el botón para abrir SOLO cuando el user hace click
   function hookOpen(){
@@ -116,20 +110,12 @@
     btn.dataset.tawkHooked = '1';
   }
 
-  // Cuando carga Tawk, aseguramos el hook y ocultamos el minificado
-  Tawk_API.onLoad = function(){
-    if (typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget(); // burbuja fuera
-    hookOpen();
-  };
-
-  // Fallback de reintentos por si el embed demora
-  (function retry(i){
-    hookOpen();
-    if (i < 25) setTimeout(function(){ retry(i+1); }, 200);
-  })(0);
+  
 </script>
+
 </body>
 </html>
+
 
 
 
