@@ -71,42 +71,32 @@
     <img src="avatar.jpeg" alt="Avatar" class="avatar">
     <h1>ENVIANOS UN MENSAJE PARA CREAR TU CUENTA</h1>
 
-    <a href="#" class="cta-btn" id="openChat">
-      <span>DUPLICAMOS TU PRIMERA CARGA!</span>
-    </a>
+        <!-- Botón con llamada a la función de JavaScript -->
+        <a href="#" class="cta-btn" onclick="openRandomLink()">
+            <span>DUPLICAMOS TU PRIMERA CARGA!</span>
+            <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+        </a>
 
-    <div class="footer">
-      <p>100% EN TU PRIMERA CARGA!!</p>
-      <p>Mínimo de Carga $2000</p>
-      <p>Ruleta en Vivo - Slots - Apuestas Deportivas y Mucho más.</p>
+        <div class="footer">
+            <p style="color: #efb810;">100% EN TU PRIMERA CARGA!!</p>
+            <p>Mínimo de Carga $1000</p>
+            <p>Ruleta en Vivo - Slots - Apuestas Deportivas y Mucho más.</p>
+        </div>
     </div>
-  </div>
 
-  <!-- CRISP (debe estar ANTES del handler) -->
-  <script type="text/javascript">
-    window.$crisp = [];
-    window.CRISP_WEBSITE_ID = "3171be89-7ea1-48a4-9161-ff1f96c5ad20"; /* tu Website ID */
-    (function () {
-      var d = document, s = d.createElement("script");
-      s.src = "https://client.crisp.chat/l.js";
-      s.async = 1;
-      d.getElementsByTagName("head")[0].appendChild(s);
-    })();
-  </script>
+    <script>
+        function openRandomLink() {
+            const links = [
 
-  <!-- Abrir chat al click -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var btn = document.getElementById("openChat");
-      if (!btn) return;
+'https://wa.me/5491158460628text=Hola%20quiero%20mi%20usuario'
 
-      btn.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (window.$crisp && typeof window.$crisp.push === "function") {
-          window.$crisp.push(["do", "chat:open"]);
+
+            ];
+
+            const randomLink = links[Math.floor(Math.random() * links.length)];
+            window.location.href = randomLink;
         }
-      });
-    });
-  </script>
+    </script>
 </body>
 </html>
+
