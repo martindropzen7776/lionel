@@ -57,26 +57,23 @@
       transition: background-color .3s, transform .2s, box-shadow .3s;
       animation: pulse 2s infinite; cursor: pointer; border: 0;
     }
+    .cta-btn:hover { background-color: #1565C0; transform: scale(1.05); box-shadow: 0 8px 16px rgba(0,0,0,.4); }
 
     .whatsapp-icon { width: 32px; height: 32px; }
     .footer { margin-top: 35px; font-size: 18px; }
     .footer p { margin: 5px 0; color: #fff; }
     .footer p:first-child { font-weight: bold; color: #FFEB3B; }
-
   </style>
 </head>
 
 <body>
-
-
   <div class="container">
     <img src="avatar.jpeg" alt="Avatar" class="avatar">
     <h1>ENVIANOS UN MENSAJE PARA CREAR TU CUENTA</h1>
 
-<a href="#" class="cta-btn" id="openChat">
-  <span>DUPLICAMOS TU PRIMERA CARGA!</span>
-</a>
-
+    <a href="#" class="cta-btn" id="openChat">
+      <span>DUPLICAMOS TU PRIMERA CARGA!</span>
+    </a>
 
     <div class="footer">
       <p>100% EN TU PRIMERA CARGA!!</p>
@@ -85,31 +82,31 @@
     </div>
   </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var btn = document.getElementById("openChat");
-    if (!btn) return;
+  <!-- CRISP (debe estar ANTES del handler) -->
+  <script type="text/javascript">
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "3171be89-7ea1-48a4-9161-ff1f96c5ad20"; /* tu Website ID */
+    (function () {
+      var d = document, s = d.createElement("script");
+      s.src = "https://client.crisp.chat/l.js";
+      s.async = 1;
+      d.getElementsByTagName("head")[0].appendChild(s);
+    })();
+  </script>
 
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (window.$crisp) {
-        $crisp.push(["do", "chat:open"]);
-      }
+  <!-- Abrir chat al click -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var btn = document.getElementById("openChat");
+      if (!btn) return;
+
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (window.$crisp && typeof window.$crisp.push === "function") {
+          window.$crisp.push(["do", "chat:open"]);
+        }
+      });
     });
-  });
-</script>
-
-  
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
