@@ -73,9 +73,10 @@
     <img src="avatar.jpeg" alt="Avatar" class="avatar">
     <h1>ENVIANOS UN MENSAJE PARA CREAR TU CUENTA</h1>
 
-<a href="javascript:void(0)" class="cta-btn" onclick="openCrispChat()">
+<a href="#" class="cta-btn" id="openChat">
   <span>DUPLICAMOS TU PRIMERA CARGA!</span>
 </a>
+
 
     <div class="footer">
       <p>100% EN TU PRIMERA CARGA!!</p>
@@ -84,29 +85,24 @@
     </div>
   </div>
 
-<script type="text/javascript">
-  window.$crisp=[];
-  window.CRISP_WEBSITE_ID="TU_ID_DE_CRISP"; 
-  (function(){
-    d=document;s=d.createElement("script");
-    s.src="https://client.crisp.chat/l.js";
-    s.async=1;
-    d.getElementsByTagName("head")[0].appendChild(s);
-  })();
-</script>
-
 <script>
-  // Esto abre el chat directo al cargar
-  window.$crisp.push(["do", "chat:open"]);
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("openChat");
+    if (!btn) return;
 
-  // Si querés que sea al hacer click en tu botón:
-  function openCrispChat() {
-    window.$crisp.push(["do", "chat:open"]);
-  }
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (window.$crisp) {
+        $crisp.push(["do", "chat:open"]);
+      }
+    });
+  });
 </script>
+
   
 </body>
 </html>
+
 
 
 
