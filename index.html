@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Lionel</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
@@ -33,71 +33,233 @@
   </script>
 
   <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #2196F3; /* Azul del fondo del logo */
-      text-align: center;
-      color: white;
-      margin: 0;
-      padding: 0;
-    }
-    .container { max-width: 400px; margin: 0 auto; padding: 50px 20px; }
-    .avatar {
-      width: 180px; height: 180px; border-radius: 50%;
-      margin-bottom: 20px; border: 4px solid white;
-    }
-    h1 { font-size: 26px; margin-bottom: 20px; }
+  :root{ --blue:#3A8DE6; --blue-dark:#2E7ED4; --white:#fff; --muted:#e9f3ff; --yellow:#FFC72C; --green:#19c37d; --pill:#0A0A0A; }
+  *{box-sizing:border-box} html,body{height:100%}
+  body{ margin:0; font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial; color:var(--white);
+        background:#1c8dc3;}
+  .wrap{max-width:720px;margin:0 auto;padding:38px 18px 56px}
+  .hero{display:grid;place-items:center;text-align:center}
+  .avatar{width:180px;height:180px;border-radius:50%;background:#1c8dc3 url('avatar.jpeg') center/cover no-repeat;border:8px solid #fff;margin-bottom:24px}
+  h1{margin:0 0 20px;text-transform:uppercase;letter-spacing:.6px;font-weight:900;font-size:clamp(22px,4vw,38px)}
+  .pill-panel{background:#0A0A0A;border-radius:64px;width:min(620px,100%);padding:26px;box-shadow:0 14px 28px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;margin:0 auto 22px}
+  .step{display:none;width:100%;text-align:center}.step.active{display:block}
 
-    .cta-btn {
-      background-color: #000; color: #fff;
-      padding: 22px 40px; font-size: 20px;
-      text-decoration: none; border-radius: 50px;
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,.3);
-      transition: background-color .3s, transform .2s, box-shadow .3s;
-      animation: pulse 2s infinite; cursor: pointer; border: 0;
-    }
-    .cta-btn:hover { background-color: #1565C0; transform: scale(1.05); box-shadow: 0 8px 16px rgba(0,0,0,.4); }
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-    .whatsapp-icon { width: 32px; height: 32px; }
-    .footer { margin-top: 35px; font-size: 18px; }
-    .footer p { margin: 5px 0; color: #fff; }
-    .footer p:first-child { font-weight: bold; color: #FFEB3B; }
-  </style>
+.input-group label {
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: #FFC72C; /* dorado */
+  text-transform: uppercase;
+}
+
+input[type="text"] {
+  width: 80%;
+  max-width: 360px;
+  padding: 14px 16px;
+  border: none;
+  border-bottom: 2px solid #FFC72C; /* borde dorado */
+  background: #111;
+  color: #fff;
+  font-weight: 800;
+  outline: none;
+  text-align: center;
+}
+  .btn{border:0;border-radius:999px;padding:12px 20px;font-weight:900;text-transform:uppercase;cursor:pointer;margin-top:12px}
+  .btn.yellow{background:var(--yellow);color:#111;}   /* invertido */
+  .btn.green{background:#1b6b49;color:#fff;border:2px solid #0f2e20;}  /* invertido */
+  .bank{display:grid;gap:10px;justify-items:center}
+  .row{display:flex;align-items:center;gap:8px;justify-content:center}
+  .code{font-family:monospace;background:#111;color:#fff;border:2px solid #222;padding:10px 14px;border-radius:12px;white-space:nowrap;max-width:260px;overflow:auto}
+  .promo{color:#FFC72C;font-weight:900;text-transform:uppercase;letter-spacing:.6px;margin-top:8px;margin-bottom:6px;text-align:center;font-size:clamp(14px,2.2vw,18px)}
+  .list{text-align:center;font-weight:800;line-height:1.5;font-size:clamp(14px,2.2vw,18px)} .list .muted{color:var(--muted)}
+  .conditions{margin-top:16px;text-align:center;color:#e9f3ff;line-height:1.6}
+  .dots{display:flex;gap:10px;justify-content:center;margin-top:12px}
+  .dot{width:12px;height:12px;border-radius:50%;background:#1a62b5aa}.dot.active{background:#fff}.dot.done{background:#0f8a4f}
+  footer{margin-top:24px;text-align:center;font-size:12px;color:#eaf3ffcc}
+  .note{margin-top:5px;text-align:center;color:#fff;font-size:14px;line-height:1.6;font-weight:600}
+  .warn{margin-top:10px;color:#ffb3b3;font-weight:800;font-size:14px}
+  .shake{animation:shake .3s linear}
+  .whatsapp-icon { width: 16px; height: 16px; }
+  
+#auto-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  animation: bounceZoom 1.5s ease-in-out infinite;
+}
+
+@keyframes bounceZoom {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.05); }
+  50%  { transform: scale(0.98); }
+  70%  { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+  
+  @keyframes shake{
+    0%,100%{transform:translateX(0)}
+    20%{transform:translateX(-6px)}
+    40%{transform:translateX(6px)}
+    60%{transform:translateX(-4px)}
+    80%{transform:translateX(4px)}
+  }
+</style>
 </head>
-
 <body>
-  <div class="container">
-    <img src="avatar.jpeg" alt="Avatar" class="avatar">
-    <h1>ENVIANOS UN MENSAJE PARA CREAR TU CUENTA</h1>
+  <div class="wrap" id="app">
+    <section class="hero">
+      <div class="avatar"></div>
+      <h1>Seguí estos pasos para crear tu cuenta</h1>
 
-        <!-- Botón con llamada a la función de JavaScript -->
-        <a href="#" class="cta-btn" onclick="openRandomLink()">
-            <span>DUPLICAMOS TU PRIMERA CARGA!</span>
-            <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
-        </a>
-
-        <div class="footer">
-            <p style="color: #efb810;">100% EN TU PRIMERA CARGA!!</p>
-            <p>Mínimo de Carga $1000</p>
-            <p>Ruleta en Vivo - Slots - Apuestas Deportivas y Mucho más.</p>
+      <!-- CONTENEDOR EN PÍLDORA: 3 PASOS -->
+      <div class="pill-panel">
+        <!-- Paso 1 -->
+        <div class="step active" id="step-1">
+          <div class="input-group">
+            <label for="name">Escribi tu nombre para crear tu usuario</label>
+         </div>
+          <input type="text" id="name" placeholder="Escribí tu nombre"/>
+          <br><button class="btn yellow" id="to-2">DUPLICA TU PRIMER CARGA</button>
+          <div id="warn-name" class="warn" role="alert" aria-live="assertive" hidden>
+            Tu nombre debe tener al menos 3 caracteres.
+          </div>
         </div>
-    </div>
 
-    <script>
-        function openRandomLink() {
-            const links = [
+        <!-- Paso 2 -->
+        <div class="step" id="step-2">
+          <div class="bank">
+            <div class="row">
+              <div class="code" id="cbu">0000085700204071441993</div>
+              <button class="btn yellow" id="copy-cbu">Copiar CBU</button>
+            </div>
+          </div>
 
-'https://wa.me/5491158460628?text=Hola%20quiero%20mi%20usuario'
+          <!-- CONDICIONES -->
+          <div class="conditions">
+            <span style="color:#FFC72C; font-weight:900;">JUEGA en CASINO ZEUS</span><br>
+            Carga mínima: $2000<br>
+            Retiros (con CVU) de 10 a 16 hs. <span style="color:#FFC72C; font-weight:900;">sin límites</span><br>
+            Atención 24 horas
+          </div>
 
+          <button class="btn yellow" id="to-3">Reclamá tu bono</button>
+          <div id="warn-cbu" class="warn" role="alert" aria-live="assertive" hidden>
+            Tenés que copiar el CBU antes de continuar.
+          </div>
+        </div>
 
-            ];
+        <!-- Paso 3 -->
+        <div class="step" id="step-3">
+          <p>¡Listo <b id="n-preview"></b>! Tocá el botón para continuar por WhatsApp.</p>
+<button class="btn green" id="auto-wa">
+  Reclamá tu 100% de BONO
+  <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+</button>
+          <p class="note">Al tocar el botón vas a ser dirigido automáticamente a WhatsApp.</p>
+        </div>
+      </div> <!-- 👈 CIERRE DE .pill-panel, antes todo lo de abajo quedaba adentro -->
 
-            const randomLink = links[Math.floor(Math.random() * links.length)];
-            window.location.href = randomLink;
-        }
-    </script>
+      <!-- NOTA FINAL -->
+      <div class="note">
+        No esperes más, basta de intermediarios para registrarte,<br>
+        completá tus datos y cargá y empezá a jugar
+      </div>
+
+      <!-- TEXTO INFERIOR -->
+      <div class="promo">100% en tu primera carga!!</div>
+
+      <div class="dots" id="dots">
+        <div class="dot active" data-step="1"></div>
+        <div class="dot" data-step="2"></div>
+        <div class="dot" data-step="3"></div>
+      </div>
+
+    </section>
+
+    <footer>© 2025 • Lionel • Casino</footer>
+  </div>
+
+<script>
+  // WhatsApps (aleatorio)
+  const WHATSAPPS = [
+    { phone:"5491139416439" },
+
+  ];
+  const DEFAULT_MSG = "";
+
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+
+  function setStep(n){
+    $$(".step").forEach((s,i)=> s.classList.toggle("active", i===n-1));
+    $$("#dots .dot").forEach((d,i)=>{
+      d.classList.toggle("active", i===n-1);
+      d.classList.toggle("done", i < n-1);
+    });
+    if(n===3) $("#n-preview").textContent = $("#name").value.trim();
+  }
+
+  // Paso 1: validar nombre (>=3)
+  $("#to-2").addEventListener("click", ()=> {
+    const v = $("#name").value.trim();
+    const ok = v.length >= 3;
+    $("#warn-name").hidden = ok;
+    if(ok) setStep(2);
+  });
+
+  // Paso 2: copiar CBU + control de avance
+  let copiedCBU = false;
+  const btnCopy = document.getElementById("copy-cbu");
+  const warn    = document.getElementById("warn-cbu");
+  const btnNext = document.getElementById("to-3");
+
+  btnCopy.addEventListener("click", ()=> {
+    const txt = document.getElementById("cbu").textContent.trim();
+    navigator.clipboard.writeText(txt).then(()=>{
+      copiedCBU = true;
+      btnCopy.textContent = "CBU Copiado";
+      warn.hidden = true;
+      btnCopy.classList.remove("shake");
+      setTimeout(()=> btnCopy.textContent = "Copiar CBU", 1500);
+    }).catch(()=>{
+      warn.textContent = "No se pudo copiar automáticamente. Copiá el CBU manualmente.";
+      warn.hidden = false;
+      btnCopy.classList.add("shake");
+    });
+  });
+
+  btnNext.addEventListener("click", ()=> {
+    if(!copiedCBU){
+      warn.hidden = false;
+      btnCopy.classList.add("shake");
+      btnCopy.focus({preventScroll:true});
+      return;
+    }
+    setStep(3);
+  });
+
+  // Paso 3: WhatsApp aleatorio con nombre en el mensaje
+  function pickRandom(len){
+    if (crypto?.getRandomValues) {
+      const a = new Uint32Array(1);
+      crypto.getRandomValues(a);
+      return a[0] % len;
+    }
+    return Math.floor(Math.random() * len);
+  }
+
+  $("#auto-wa").addEventListener("click", ()=> {
+    const name = $("#name").value.trim() || "Cliente";
+    const msg  = encodeURIComponent(DEFAULT_MSG.replace("{name}", name));
+    const w    = WHATSAPPS[pickRandom(WHATSAPPS.length)];
+    window.open(`https://wa.me/${w.phone}?text=${msg}`, "_blank");
+  });
+</script>
 </body>
 </html>
-
-
