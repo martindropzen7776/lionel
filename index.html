@@ -180,30 +180,32 @@ input[type="text"] {
           </div>
         </div>
 
-   <!-- Paso 2 -->
-        <div class="step" id="step-2">
-          <div class="bank">
-            <div class="row">
-              <div class="code" id="cbu">0000085700204071441993</div>
-              <button class="btn yellow" id="copy-cbu">Copiar CBU</button>
-            </div>
-          </div>
-          
-          <!-- CONDICIONES -->
-          <div class="conditions">
-            <span style="color:#FFC72C; font-weight:900;">JUEGA en CASINO ZEUS</span><br>
-            Carga mínima: $2000<br>
-            Retiros (con CVU) de 10 a 16 hs. <span style="color:#FFC72C; font-weight:900;">sin límites</span><br>
-            Atención 24 horas
-          </div>
+<!-- Paso 2 -->
+<div class="step" id="step-2">
 
-        
-          <button class="btn yellow" id="to-3">Reclamá tu bono</button>
-          <div id="warn-cbu" class="warn" role="alert" aria-live="assertive" hidden>
-            Tenés que copiar el CBU antes de continuar.
-          </div>
-        </div>
+  <!-- CONDICIONES -->
+  <div class="conditions">
+    <span style="color:#FFC72C; font-weight:900;">JUEGA en CASINO ZEUS</span><br>
+    Carga mínima: $2000<br>
+    Retiros (con CVU) de 10 a 16 hs. <span style="color:#FFC72C; font-weight:900;">sin límites</span><br>
+    Atención 24 horas
+  </div>
 
+  <!-- CBU + Botón de Copiar -->
+  <div class="bank">
+    <div class="row">
+      <div class="code" id="cbu">CBU_NUMBER</div>
+      <button class="btn yellow" id="copy-cbu">Copiar CBU</button>
+    </div>
+  </div>
+
+  <!-- Botón Avanzar -->
+  <button class="btn yellow" id="to-3">Reclamá tu bono</button>
+
+  <div id="warn-cbu" class="warn" role="alert" aria-live="assertive" hidden>
+    Tenés que copiar el CBU antes de continuar.
+  </div>
+</div>
         <!-- Paso 3 -->
         <div class="step" id="step-3">
           <p>¡Listo <b id="n-preview"></b>! Tocá el botón para continuar por WhatsApp.</p>
@@ -233,12 +235,12 @@ input[type="text"] {
     </section>
 
 <!-- Widget WhatsApp flotante -->
-<a href="https://wa.me/5491122223333?text=Hola%2C%20necesito%20atenci%C3%B3n%20personalizada"
+<a href="https://wa.me/5491139416439?text=Hola%2C%20necesito%20atenci%C3%B3n%20personalizada"
    class="wa-float" id="wa-float" target="_blank" aria-label="WhatsApp">
   <img src="whatsapp.png" alt="WhatsApp" class="wa-icon">
 </a>
 
-<a href="https://wa.me/5491122223333?text=Hola%2C%20necesito%20atenci%C3%B3n%20personalizada"
+<a href="https://wa.me/5491139416439?text=Hola%2C%20necesito%20atenci%C3%B3n%20personalizada"
    class="wa-bubble" id="wa-bubble" target="_blank" aria-label="Abrir WhatsApp">
   ¿Necesitas atención personalizada?
 </a>
@@ -352,6 +354,7 @@ input[type="text"] {
   
 </body>
 </html>
+
 
 
 
