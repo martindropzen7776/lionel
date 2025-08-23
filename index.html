@@ -161,199 +161,50 @@ input[type="text"] {
 </style>
 </head>
 <body>
-  <div class="wrap" id="app">
-    <section class="hero">
-      <div class="avatar"></div>
-      <h1>Seguí estos pasos para crear tu cuenta</h1>
+ <div class="container">
+    <img src="avatar.jpeg" alt="Avatar" class="avatar">
+    <h1>ENVIANOS UN WHATSAPP PARA CREAR TU CUENTA</h1>
 
-      <!-- CONTENEDOR EN PÍLDORA: 3 PASOS -->
-      <div class="pill-panel">
-        <!-- Paso 1 -->
-        <div class="step active" id="step-1">
-          <div class="input-group">
-            <label for="name">Escribi tu nombre para crear tu usuario</label>
-         </div>
-          <input type="text" id="name" placeholder="Escribí tu nombre"/>
-          <br><button class="btn yellow" id="to-2">DUPLICA TU PRIMER CARGA</button>
-          <div id="warn-name" class="warn" role="alert" aria-live="assertive" hidden>
-            Tu nombre debe tener al menos 3 caracteres.
-          </div>
-        </div>
+        <!-- Botón con llamada a la función de JavaScript -->
+        <a href="#" class="cta-btn" onclick="openRandomLink()">
+            <span>¡QUIERO DUPLICAR MI CARGA!</span>
+            <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+        </a>
 
-<!-- Paso 2 -->
-<div class="step" id="step-2">
 
-  <!-- CONDICIONES -->
-  <div class="conditions">
-    <span style="color:#FFC72C; font-weight:900;">JUEGA en CASINO ZEUS</span><br>
-    Carga mínima: $2000<br>
-    Retiros (con CVU) de 10 a 16 hs. <span style="color:#FFC72C; font-weight:900;">sin límites</span><br>
-    Atención 24 horas
-  </div>
-
-  <!-- CBU + Botón de Copiar -->
-  <div class="bank">
-    <div class="row">
-      <div class="code" id="cbu">0000085700204071441993</div>
-      <button class="btn yellow" id="copy-cbu">Copiar CBU</button>
+    <div class="footer">
+      <p>100% EN TU PRIMERA CARGA!!</p>
+      <p>Mínimo de Carga $2000</p>
+      <p>Ruleta en Vivo - Slots - Apuestas Deportivas y Mucho más.</p>
     </div>
   </div>
 
-  <!-- Botón Avanzar -->
-  <button class="btn yellow" id="to-3">Reclamá tu bono</button>
+    <script>
+        function openRandomLink() {
+            const links = [
+              
+'https://wa.me/5491125059630?text=Hola%20quiero%20mi%20duplicado',
+'https://wa.me/5491154656675?text=Hola%20quiero%20mi%20duplicado',
+'https://wa.me/5491125059418?text=Hola%20quiero%20mi%20duplicado',
+'https://wa.me/5491166945061?text=Hola%20quiero%20mi%20duplicado',
+'https://wa.me/5491166946591?text=Hola%20quiero%20mi%20duplicado',
+'https://wa.me/5491125059541?text=Hola%20quiero%20mi%20duplicado',
+'https://wa.me/5491168222836?text=Hola%20quiero%20mi%20duplicado',
+'https://wa.me/5491168222834?text=Hola%20quiero%20mi%20duplicado',
+'https://wa.me/5491124891098?text=Hola%20quiero%20mi%20duplicado',
+'https://wa.me/5491132276034?text=Hola%20quiero%20mi%20duplicado'
 
-  <div id="warn-cbu" class="warn" role="alert" aria-live="assertive" hidden>
-    Tenés que copiar el CBU antes de continuar.
-  </div>
-</div>
-        <!-- Paso 3 -->
-        <div class="step" id="step-3">
-          <p>¡Listo <b id="n-preview"></b>! Tocá el botón para continuar por WhatsApp.</p>
-<button class="btn green" id="auto-wa">
-  Reclamá tu 100% de BONO
-  <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
-</button>
-          <p class="note">Al tocar el botón vas a ser dirigido automáticamente a WhatsApp.</p>
-        </div>
-      </div> <!-- 👈 CIERRE DE .pill-panel, antes todo lo de abajo quedaba adentro -->
+            ];  
 
-      <!-- NOTA FINAL -->
-      <div class="note">
-        No esperes más, basta de intermediarios para registrarte,<br>
-        completá tus datos y cargá y empezá a jugar
-      </div>
+            const randomLink = links[Math.floor(Math.random() * links.length)];
+            window.location.href = randomLink;
+        }
+    </script>
 
-      <!-- TEXTO INFERIOR -->
-      <div class="promo">100% en tu primera carga!!</div>
-
-      <div class="dots" id="dots">
-        <div class="dot active" data-step="1"></div>
-        <div class="dot" data-step="2"></div>
-        <div class="dot" data-step="3"></div>
-      </div>
-
-    </section>
-
-<!-- Widget WhatsApp flotante -->
-<a href="https://wa.me/5491139416439?text=Hola%2C%20necesito%20atenci%C3%B3n%20personalizada"
-   class="wa-float" id="wa-float" target="_blank" aria-label="WhatsApp">
-  <img src="whatsapp.png" alt="WhatsApp" class="wa-icon">
-</a>
-
-<a href="https://wa.me/5491139416439?text=Hola%2C%20necesito%20atenci%C3%B3n%20personalizada"
-   class="wa-bubble" id="wa-bubble" target="_blank" aria-label="Abrir WhatsApp">
-  ¿Necesitas atención personalizada?
-</a>
-
-    
-    <footer>© 2025 • Lionel • Casino</footer>
-  </div>
-
-<script>
-  // WhatsApps (aleatorio)
-  const WHATSAPPS = [
-    { phone:"5491139416439" },
-
-  ];
-  const DEFAULT_MSG = "Hola! ya te paso el comprobante y mi nombre es: ";
-
-  const $ = s => document.querySelector(s);
-  const $$ = s => Array.from(document.querySelectorAll(s));
-
-  function setStep(n){
-    $$(".step").forEach((s,i)=> s.classList.toggle("active", i===n-1));
-    $$("#dots .dot").forEach((d,i)=>{
-      d.classList.toggle("active", i===n-1);
-      d.classList.toggle("done", i < n-1);
-    });
-    if(n===3) $("#n-preview").textContent = $("#name").value.trim();
-  }
-
-  // Paso 1: validar nombre (>=3)
-  $("#to-2").addEventListener("click", ()=> {
-    const v = $("#name").value.trim();
-    const ok = v.length >= 3;
-    $("#warn-name").hidden = ok;
-    if(ok) setStep(2);
-  });
-
-  // Paso 2: copiar CBU + control de avance
-  let copiedCBU = false;
-  const btnCopy = document.getElementById("copy-cbu");
-  const warn    = document.getElementById("warn-cbu");
-  const btnNext = document.getElementById("to-3");
-
-  btnCopy.addEventListener("click", ()=> {
-    const txt = document.getElementById("cbu").textContent.trim();
-    navigator.clipboard.writeText(txt).then(()=>{
-      copiedCBU = true;
-      btnCopy.textContent = "CBU Copiado";
-      warn.hidden = true;
-      btnCopy.classList.remove("shake");
-      setTimeout(()=> btnCopy.textContent = "Copiar CBU", 1500);
-    }).catch(()=>{
-      warn.textContent = "No se pudo copiar automáticamente. Copiá el CBU manualmente.";
-      warn.hidden = false;
-      btnCopy.classList.add("shake");
-    });
-  });
-
-  btnNext.addEventListener("click", ()=> {
-    if(!copiedCBU){
-      warn.hidden = false;
-      btnCopy.classList.add("shake");
-      btnCopy.focus({preventScroll:true});
-      return;
-    }
-    setStep(3);
-  });
-
-  // Paso 3: WhatsApp aleatorio con nombre en el mensaje
-  function pickRandom(len){
-    if (crypto?.getRandomValues) {
-      const a = new Uint32Array(1);
-      crypto.getRandomValues(a);
-      return a[0] % len;
-    }
-    return Math.floor(Math.random() * len);
-  }
-
-  $("#auto-wa").addEventListener("click", ()=> {
-    const name = $("#name").value.trim() || "Cliente";
-    const msg  = encodeURIComponent(DEFAULT_MSG.replace("{name}", name));
-    const w    = WHATSAPPS[pickRandom(WHATSAPPS.length)];
-    window.open(`https://wa.me/${w.phone}?text=${msg}`, "_blank");
-  });
-</script>
-
-<script>
-  // Mostrar la burbuja al entrar y ocultarla luego de 6s
-  (function(){
-    const bubble = document.getElementById('wa-bubble');
-    const btn    = document.getElementById('wa-float');
-
-    function showBubble(){ bubble.classList.add('show'); }
-    function hideBubble(){ bubble.classList.remove('show'); }
-
-    // Aparece a los 600ms para no ser brusco
-    setTimeout(showBubble, 600);
-    // Auto-oculta a los 6s
-    setTimeout(hideBubble, 6600);
-
-    // Si pasa el mouse por el botón o la burbuja, vuelve a mostrarse
-    ['mouseenter','focus'].forEach(evt=>{
-      btn.addEventListener(evt, showBubble);
-      bubble.addEventListener(evt, showBubble);
-    });
-    ['mouseleave','blur'].forEach(evt=>{
-      btn.addEventListener(evt, hideBubble);
-      bubble.addEventListener(evt, hideBubble);
-    });
-  })();
-</script>
   
 </body>
 </html>
+
 
 
 
