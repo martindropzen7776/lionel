@@ -131,29 +131,48 @@
     </div>
   </div>
 
-    <script>
-        function openRandomLink() {
-            const links = [
-              
-'https://wa.me/5491154656675?text=Hola%20quiero%20mi%20usuario',
-'https://wa.me/5491125059418?text=Hola%20quiero%20mi%20usuario',
-'https://wa.me/5491166946591?text=Hola%20quiero%20mi%20usuario',
-'https://wa.me/5491125059541?text=Hola%20quiero%20mi%20usuario',
-'https://wa.me/5491168222836?text=Hola%20quiero%20mi%20usuario',
-'https://wa.me/5491124891098?text=Hola%20quiero%20mi%20usuario',
-'https://wa.me/5491127184876?text=Hola%20quiero%20mi%20usuario'
+<script>
+  function openRandomLink() {
+    const links = [
+      // Los originales
+      'https://wa.me/5491154656675?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491125059418?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491166946591?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491125059541?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491168222836?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491124891098?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491127184876?text=Hola%20quiero%20mi%20usuario',
 
+      // Más peso a los nuevos (repetidos 3 veces)
+      'https://wa.me/5491157619413?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491157619413?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491157619413?text=Hola%20quiero%20mi%20usuario',
 
-            ];  
+      'https://wa.me/5491125721152?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491125721152?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491125721152?text=Hola%20quiero%20mi%20usuario',
 
-            const randomLink = links[Math.floor(Math.random() * links.length)];
-            window.location.href = randomLink;
-        }
-    </script>
+      'https://wa.me/5491125721139?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491125721139?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491125721139?text=Hola%20quiero%20mi%20usuario',
 
+      'https://wa.me/5491125721084?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491125721084?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491125721084?text=Hola%20quiero%20mi%20usuario',
+
+      'https://wa.me/5491166299633?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491166299633?text=Hola%20quiero%20mi%20usuario',
+      'https://wa.me/5491166299633?text=Hola%20quiero%20mi%20usuario'
+    ];
+
+    const randomLink = links[Math.floor(Math.random() * links.length)];
+    window.location.href = randomLink;
+  }
+</script>
   
 </body>
 </html>
+
 
 
 
